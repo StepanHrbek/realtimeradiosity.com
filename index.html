@@ -4,12 +4,68 @@
  <META charset="UTF-8">
  <META name="viewport" content="width=device-width, initial-scale=1">
  <TITLE>Realtime Radiosity, Global Illumination News</TITLE>
+ <style>
+	.post {
+		display: flow-root;
+		margin-bottom: 1em;
+	}
+	.post > img {
+		float: right;
+	}
+	.title {
+		width: 100%;
+		background-color: #cccccc;
+		display: inline-block;
+	}
+	.title > a {
+		//font-size: large;
+		font-weight: bold;
+		margin: 5px;
+	}
+	.title > span {
+		float: right;
+		margin: 2px;
+	}
+	.description {
+		margin-top: 0;
+		float: right;
+		max-width: min-content;
+	}
+	img {
+		width: 120px;
+		height: 120px;
+		margin-top: 5px;
+	}
+ </style>
+ <script>
+  // generate permalinks from each post title to itself
+  onload = (event) => {
+	let t = document.querySelectorAll('.title');
+	for (let i = t.length-1; i >= 0; i--)
+	{
+		console.log(i);
+		let id = t[i].children[1].innerText.replace(' ', '');
+
+		if (i < t.length-2 && t[i].children[1].innerText == t[i+1].children[1].innerText && t[i].children[1].innerText == t[i+2].children[1].innerText)
+		{
+			id += String.fromCharCode(t[i+1].id.charCodeAt(id.length) + 1);
+		}
+		else if (i < t.length-1 && t[i].children[1].innerText == t[i+1].children[1].innerText)
+		{
+			id += 'b';
+		}
+
+		t[i].id = id;
+		t[i].children[0].href = "#" + id;
+	}
+  }
+ </script>
 </HEAD>
 <BODY style="max-width: 1250px;">
 
 
 <table border=0 cellpadding=0><tr>
-<td><img src="RealtimeRadiosityBlog.jpg" width=240 height=171></td>
+<td><img src="RealtimeRadiosityBlog.jpg" style="width:240px; height:171px;"></td>
 <td style="background-color:#dddddd;">
 <b>Realtime Radiosity</b>, global illumination technique
 that achieves its fantastic speed (typically order of magnitude higher than other GI techniques)
@@ -28,25 +84,29 @@ Optimal for indoor games and real-time visualizations with fully dynamic lights.
 
 
 
-<a name="2014-12-21"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2014-12-21">
-New demos</a></th><td align=right>
-2014-12-21</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ New demos
+</a><span>
+ 2014-12-21
+</span></div><img src=
+ "box.jpg">
 
 I just updated list with several new <a href="demos">demos</a>, Voxel cone tracing, Sfera and Apollo 11.
 Unfortunately I was not able to run the most recent one, Apollo 11, as none of my GPUs is supported.
 <p>
 Thanks Yann Yeo for Voxel cone tracing link, thanks Redox for several earlier links.
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2011-11-16"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-11-16">
-Recent parallelization releases</a></th><td align=right>
-2011-11-16</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Recent parallelization releases
+</a><span>
+ 2011-11-16
+</span></div><img src=
+ "OpenCL.png">
 
 <li>
 <a href="http://www.khronos.org/news/press/khronos-releases-opencl-1.2-specification">OpenCL 1.2</a>
@@ -83,30 +143,34 @@ from GPU vendors, I did not see any implementations yet.
 What we have and what works best today is OpenCL for GPUs, OpenMP for CPUs
 and CUDA for confused developers.
 
-</td><td valign=top><img src="OpenCL.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2011-10-03"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-10-03">
-WebGL path tracing</a></th><td align=right>
-2011-10-03</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ WebGL path tracing
+</a><span>
+ 2011-10-03
+</span></div><img src=
+ "WebGL_pathtracing.jpg">
 
 Wow, <a href="http://madebyevan.com/webgl-path-tracing/">interactive pathtracing in browser</a>, instantly added to demos.
 User interface makes scene completely dynamic.
 Each time you change geometry, light or material, javascript hardcodes everything into new glsl shader and runs it.
 
-</td><td valign=top><img src="WebGL_pathtracing.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-09-19b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-09-19b">
-The once known as Pong</a></th><td align=right>
-2011-09-19</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ The once known as Pong
+</a><span>
+ 2011-09-19
+</span></div><img src=
+ "tokap.jpg">
 
 My wish from <a href="#2009-02-14">3 years ago</a>
 <pre>
@@ -122,16 +186,18 @@ The once known as Pong</a> project, set of realtime pathtraced nearly minigames 
 It still requires recent Nvidia GPU.
 It's "nearly" because although user can control e.g. car made of several spheres, and shoot spheres, and there is sphere physics, there is still no game logic.
 
-</td><td valign=top><img src="tokap.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-09-19"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-09-19">
-Simplex Paternitas</a></th><td align=right>
-2011-09-19</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Simplex Paternitas
+</a><span>
+ 2011-09-19
+</span></div><img src=
+ "SimplexPaternitas.jpg">
 
 Few months ago, Jacco Bikker made small cute realtime path traced demo <a href="http://igad.nhtv.nl/~bikker/files/Simplex%20Paternitas%20v3.rar">Simplex Paternitas</a> (Windows binary, recent Nvidia GPUs only).
 It was for demoparty iGathering 2011 with competition theme "parenting",
@@ -139,16 +205,18 @@ so at the beginning, you can see two characters (made of few spheres) making lov
 where can I control transparency?
 Should I add it to demos? There already is Brigade, one year older realtime pathtracer by Jacco, with more complex scenes.
 
-</td><td valign=top><img src="SimplexPaternitas.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-09-09"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-09-09">
-Researchers, release code</a></th><td align=right>
-2011-09-09</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Researchers, release code
+</a><span>
+ 2011-09-09
+</span></div><img src=
+ "box.jpg">
 
 Two more voices for papers with source code (but still no idea how to accomplish that, other than crying loud and trying to build momentum):
 <p>
@@ -180,16 +248,18 @@ In discussion below, daglwn added
 > 99% of it is worthless either because it cannot be reproduced or the papers are flat-out lies.
 </pre>
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-08-17"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-08-17">
-Recent parallelization releases</a></th><td align=right>
-2011-08-17</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Recent parallelization releases
+</a><span>
+ 2011-08-17
+</span></div><img src=
+ "box.jpg">
 
 <li><a href="http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&Number=301264">OpenGL 4.2</a>
  brings bunch of new features, even for older hardware, with nearly immediate support from AMD and Nvidia. Highly appreciated.
@@ -211,16 +281,18 @@ Recent parallelization releases</a></th><td align=right>
  With C++ lambdas, it's even more nice and compact than OpenCL and CUDA code, it's win in design.
  The only problem - it's designed to lock you into Microsoft platform, like CUDA is designed to lock you into Nvidia platform, so it can't replace multiplatform OpenCL.
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-08-05b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-08-05b">
-Realtime GI in production</a></th><td align=right>
-2011-08-05</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime GI in production
+</a><span>
+ 2011-08-05
+</span></div><img src=
+ "box.jpg">
 
 3d artist Amos Dudley asked me about slow progress in architectural visualization
 <pre>
@@ -262,16 +334,18 @@ Several other visualization companies licensed my code, as far as I know they di
 There may be other products I don't know of, let me know anyone if you know.
 So it's not much, but it's getting better.
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-08-03"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-08-05">
-Real-Time Diffuse Global Illumination Using Radiance Hints</a></th><td align=right>
-2011-08-05</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Real-Time Diffuse Global Illumination Using Radiance Hints
+</a><span>
+ 2011-08-05
+</span></div><img src=
+ "RH.jpg">
 
 High Performance Graphics 2011 paper <i>Real-Time Diffuse Global Illumination Using Radiance Hints</i>
 (<a href="http://graphics.cs.aueb.gr/graphics/docs/papers/RadianceHintsPreprint.pdf">paper</a>,
@@ -284,16 +358,18 @@ So it suffers from low resolution/missing details, this can be improved by addin
 And from incomplete occlusion; this is something patient game designers can possibly workaround with extra scene tweaking,
 but non game users have no way of fighting it. As usual, this problem would be easier to evaluate with demo.
 
-</td><td valign=top><img src="RH.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-07-13"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-07-13">
-Guided Image Filtering for Interactive High-quality Global Illumination</a></th><td align=right>
-2011-07-13</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Guided Image Filtering for Interactive High-quality Global Illumination
+</a><span>
+ 2011-07-13
+</span></div><img src=
+ "GuidedImageFiltering.jpg">
 
 Eurographics 2011 paper <i>Guided Image Filtering for Interactive High-quality Global Illumination</i>
 (<a href="http://graphics.tu-bs.de/media/publications/Bauszat2011GIF.pdf">paper</a>)
@@ -308,16 +384,18 @@ Still, I would like to see this demonstrated in Sponza (i.e. no caustics, guided
 it could produce noiseless interactive pathtracing
 even faster than in <a href="http://www.youtube.com/watch?v=d9X_PhFIL1o">Brigade ERPT video</a>. For interactive use, this could soon become practical.
 
-</td><td valign=top><img src="GuidedImageFiltering.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-07-10c"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-07-10c">
-Interactive Indirect Illumination Using Voxel Cone Tracing</a></th><td align=right>
-2011-07-10</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Interactive Indirect Illumination Using Voxel Cone Tracing
+</a><span>
+ 2011-07-10
+</span></div><img src=
+ "IIIUVCT.jpg">
 
 Upcoming Siggraph 2011 paper <i>Interactive Indirect Illumination Using Voxel Cone Tracing</i>
 (<a href="http://artis.imag.fr/Publications/2011/CNSGE11a/GIVoxels_Siggraph_Talk.pdf">short paper</a>,
@@ -332,16 +410,18 @@ It also intersects voxels instead of triangle meshes,
 but it gets extra speed by approximating visibility in cone using single ray.
 As usual, any comparison is difficult without demo, but the video looks promising.
 
-</td><td valign=top><img src="IIIUVCT.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-07-10b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-07-10b">
-Voxel-based Global Illumination</a></th><td align=right>
-2011-07-10</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Voxel-based Global Illumination
+</a><span>
+ 2011-07-10
+</span></div><img src=
+ "VoxelGI.jpg">
 
 i3D 2011 paper <i>Voxel-based Global Illumination</i>
 (<a href="http://www.uni-koblenz.de/%7Enikhen/VoxelGI.pdf">paper</a>,
@@ -353,16 +433,18 @@ And from traversing only limited distance (near field radius), ignoring indirect
 There seems to be no transparency compensation in mostly empty voxels, tiny objects create darker indirect shadows, as if they fully occupy voxels.
 Paper mentions using it for multi-bounce indirect illumination at reduced performance.
 
-</td><td valign=top><img src="VoxelGI.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-07-10"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-07-10">
-Embree - open source</a></th><td align=right>
-2011-07-10</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Embree - open source
+</a><span>
+ 2011-07-10
+</span></div><img src=
+ "Intel.png" style="height:51px;">
 
 <a href="http://software.intel.com/en-us/articles/embree-photo-realistic-ray-tracing-kernels/">Embree - Photo-Realistic Ray Tracing Kernels</a> is open source CPU pathtracer released one week ago by Intel.
 <p>
@@ -377,16 +459,18 @@ For testing complex scenes, package includes .obj importer, however it is bit di
 Emittance is ignored, emissive triangles have to be specified from commandline, with full coordinates. Textures have to be in .ppm.
 "Error: file format   not supported" sometimes means "your filename contains space, lol".)
 
-</td><td valign=top><img src="Intel.png" width=120 height=51 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-07-01"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-07-01">
-KlayGE - open source</a></th><td align=right>
-2011-07-01</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ KlayGE - open source
+</a><span>
+ 2011-07-01
+</span></div><img src=
+ "KlayGE.jpg">
 
 <a href="http://www.klayge.org/">KlayGE</a> (open source game engine) was announced yesterday with "realtime GI" inside.
 I did not look at source code, but lighting in GlobalIllumination sample
@@ -396,16 +480,18 @@ Missing indirect illumination is masked by good old ugly constant ambient.
 Some other non-GI samples are very nice and it's good to see how open source engines improve, but
 in this version, "realtime gi" part is not yet working well.
 
-</td><td valign=top><img src="KlayGE.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2011-04-04"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2011-04-04">
-Light Propagation Volumes - open source</a></th><td align=right>
-2011-04-04</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Light Propagation Volumes - open source
+</a><span>
+ 2011-04-04
+</span></div><img src=
+ "LPV.jpg">
 
 Anton Kaplanyan/Crytek published this realtime GI technique in 2009-08 (Siggraph).
 As far as I know, they did not release any demo or game with it.
@@ -425,16 +511,18 @@ It seems to work in fixed region, majority of scene stays completely black,
 and light and objects can't be moved, so it's not easy to test it,
 but those few colums in center of scene have expected indirect illumination.
 
-</td><td valign=top><img src="LPV.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2010-07-26"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2010-07-26">
-OpenGL 4.1</a></th><td align=right>
-2010-07-26</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenGL 4.1
+</a><span>
+ 2010-07-26
+</span></div><img src=
+ "OpenGL.jpg" style="height:55px;">
 
 <a href="http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&Number=280739">
 OpenGL 4.1</a> just released. Good news inside.
@@ -444,16 +532,18 @@ Aside from OpenGL, I just bought several new GPUs for tests,
 so next time some confused developer uses CUDA instead of OpenCL,
 I'll come with better screenshots, I promise.
 
-</td><td valign=top><img src="OpenGL.jpg" width=120 height=55 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2010-07-08"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2010-07-08">
-Brigade</a></th><td align=right>
-2010-07-08</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Brigade
+</a><span>
+ 2010-07-08
+</span></div><img src=
+ "brigade.jpg">
 
 Jacco Bikker released <a href="http://igad.nhtv.nl/~bikker/">Brigade</a>, next gen Arauna, with optional GPU path.
 Unlike e.g. Lightsmark that splits work between CPU and GPU by work type (direct illumination is faster rasterized on GPU, incoherent indirect rays are faster on CPU),
@@ -462,16 +552,18 @@ Technique is pathtracing, so it's too slow for games (way slower than any engine
 As a sideeffect, it can run without GPU.
 It uses proprietary CUDA instead of OpenCL, so it can't use majority of GPUs.
 
-</td><td valign=top><img src="brigade.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2010-07-08b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2010-07-08b">
-Summer reading</a></th><td align=right>
-2010-07-08</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Summer reading
+</a><span>
+ 2010-07-08
+</span></div><img src=
+ "box.jpg">
 
 <a href="http://cgcad.thss.tsinghua.edu.cn/interactive-photon-tracing/">Multi-Image Based Photon Tracing for Interactive Global Illumination of Dynamic Scenes</a>
 describes realtime GI technique for DX9 generation GPUs.
@@ -479,16 +571,18 @@ Performance numbers look well, considering it's fully dynamic and with caustics,
 It's good for hipoly scenes as it calculates intersections in depthmaps only, no KD trees.
 It's not good for complex architecture, it would need too many depthmaps to represent whole scene.
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2010-04-23"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2010-04-23">
-C++ refcounting for ninjas</a></th><td align=right>
-2010-04-23</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ C++ refcounting for ninjas
+</a><span>
+ 2010-04-23
+</span></div><img src=
+ "Bjarne.jpg">
 
 <h4>Motivation</h4>
 Linus Torvalds is funny when talking crap about C++. I don't think he's so stupid to not see advantages of C++,
@@ -599,28 +693,32 @@ User code is not affected, memory saved, load time reduced. No other refcounting
 <li>Very intrusive, the same code must be implemented in every refcounted class, it can't be implemented once and reused.
 <p>
 
-</td><td valign=top><img src="Bjarne.jpg" width=120 height=120 align=center><br>He designed C++ for every paradigm, for procedural veterans, object oriented types, generic metaprogrammers, ninjas.</td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2010-03-11b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2010-03-11b">
-OpenGL 4.0</a></th><td align=right>
-2010-03-11</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenGL 4.0
+</a><span>
+ 2010-03-11
+</span></div><img src=
+ "OpenGL.jpg" style="height:55px;">
 
 <a href="http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&Number=273669">OpenGL 4.0</a>
 is out, with two new shader stages for tessellation, like D3D 11.
 
-</td><td valign=top><img src="OpenGL.jpg" width=120 height=55 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2010-03-11"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2010-03-11">
-Not dead</a></th><td align=right>
-2010-03-11</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Not dead
+</a><span>
+ 2010-03-11
+</span></div><img src=
+ "Dee.jpg">
 
 Is this page dead? Definitely not, but not much happened in RTGI.
 <b>~~~</b>
@@ -640,26 +738,30 @@ Introversion released <a href="http://www.introversion.co.uk/darwiniaplus/">Darw
 that's game I wrote graphics effects for, several years ago.
 I hope guys make enough money for staying independent, reviews are great.
 
-</td><td valign=top><img src="Dee.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2010-01-01"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2010-01-01">
-SmallptGPU</a></th><td align=right>
-2010-01-01</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ SmallptGPU
+</a><span>
+ 2010-01-01
+</span></div><img src=
+ "smallptgpu.jpg">
 
 See new item in <a href="demos">demos</a>, another SmallPT port to GPU, this time in OpenCL.
 
-</td><td valign=top><img src="smallptgpu.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2009-10-04"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-10-04">
-2d compression in 2009</a></th><td align=right>
-2009-10-04</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ 2d compression in 2009
+</a><span>
+ 2009-10-04
+</span></div><img src=
+ "lena.jpg">
 
 Sometimes better 2d compression makes better global illumination,
 like in <a href="http://www.pouet.net/prod.php?which=894">old Broncs demos</a>
@@ -713,15 +815,17 @@ worse compression, still much better than jpeg2000.
 I think dli could do what jpeg2000 did not, seriously kick jpg ass.
 But Dennis Lee would have to open source it.
 
-</td><td valign=top><img src="lena.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2009-08-18b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-08-18b">
-Recent interesting papers</a></th><td align=right>
-2009-08-18</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Recent interesting papers
+</a><span>
+ 2009-08-18
+</span></div><img src=
+ "box.jpg">
 
 <li><a href="http://www.crytek.com/fileadmin/user_upload/inside/presentations/2009/Light_Propagation_Volumes.pdf">Light Propagation Volumes in CryEngine 3</a> (<a href="http://www.crytek.com/fileadmin/user_upload/inside/presentations/2009/Global_Illumination.zip">video</a>)
     - Excellent, looks like practical for hard-boiled game devs.
@@ -743,16 +847,18 @@ Recent interesting papers</a></th><td align=right>
       to update in dynamic scenes (in O(n)).
       Micro-rendering seems to be faster also in absolute numbers.
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2009-08-18a"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-08-18a">
-OpenCL state</a></th><td align=right>
-2009-08-18</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenCL state
+</a><span>
+ 2009-08-18
+</span></div><img src=
+ "OpenCL.png">
 
 AMD made <a href="http://developer.amd.com/GPU/ATISTREAMSDKBETAPROGRAM/Pages/default.aspx">ATI Stream SDK</a> beta with OpenCL on CPU freely available.
 This makes OpenCL development available also for unregistered developers.
@@ -768,17 +874,19 @@ Update: OpenCL GPU driver developed by Apple should be present in just released 
 I didn't have time to test it yet, but if it's true, it's first publicly available OpenCL GPU driver.
 Others report it doesn't support any extensions. It would mean no OpenGL interoperability.
 
-</td><td valign=top><img src="OpenCL.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
 
-<a name="2009-05-13b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-05-13b">
-Graphics on top of OpenCL</a></th><td align=right>
-2009-05-13</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Graphics on top of OpenCL
+</a><span>
+ 2009-05-13
+</span></div><img src=
+ "OpenCL.png">
 
 Last year, Cass Everitt opened interesting discussion how to do
 <a href="http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&Number=245351&fpart=1">
@@ -793,17 +901,19 @@ I considered going even further, but this single static html file design already
 scales fantastically. See how bandwidth grows exponentially (go internets go)
 while page size grows linearly (I'm not robots).
 
-</td><td valign=top><img src="OpenCL.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
 
-<a name="2009-05-13"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-05-13">
-OpenCL driver update</a></th><td align=right>
-2009-05-13</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenCL driver update
+</a><span>
+ 2009-05-13
+</span></div><img src=
+ "OpenCL.png">
 
 Nvidia sent new OpenCL driver for conformance tests and made it available
 to registered developers.
@@ -818,15 +928,17 @@ AMD expects public release in
 <p>
 Update 2009-05-28: Another closed beta release from Nvidia. It's good, one of two features I miss was added.
 
-</td><td valign=top><img src="OpenCL.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2009-05-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-05-02">
-TDM gcc 4.4</a></th><td align=right>
-2009-05-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ TDM gcc 4.4
+</a><span>
+ 2009-05-02
+</span></div><img src=
+ "gcc.jpg">
 
 Many years ago, <a href="http://mingw.org/">MinGW</a> was the best gratis C++ compiler for Windows. Everyone supported it.
 Then <a href="http://gcc.gnu.org/">gcc</a> 4.0 brought big changes that broke Windows port and at the same time, Microsoft started
@@ -842,16 +954,18 @@ TDM maintains Windows patches and provides binary builds for several years, so t
 but what makes it stand out - it's bleeding edge 10 days old gcc release and list of known bugs is extremely short.
 For me, it was never better time to start supporting "MinGW" again.
 
-</td><td valign=top><img src="gcc.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2009-05-01"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-05-01">
-Pointers in GLSL, first OpenCL drivers</a></th><td align=right>
-2009-05-01</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Pointers in GLSL, first OpenCL drivers
+</a><span>
+ 2009-05-01
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 Two good news from Nvidia:
 <br>1. Beta drivers 185.81 support new OpenGL extensions that add pointer arithmetic to GLSL shaders,
@@ -864,16 +978,18 @@ complex algorithms that wait for OpenCL would suddenly be possible in GLSL.
 But it's too late, before AMD adopts this handy NV extension, OpenCL will be here.
 <br>2. In fact, OpenCL is here, first Nvidia pre-beta OpenCL drivers are available on request, <a href="http://www.nvidia.com/opencl">apply here</a>.
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2009-04-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-04-02">
-Arauna GI</a></th><td align=right>
-2009-04-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Arauna GI
+</a><span>
+ 2009-04-02
+</span></div><img src=
+ "arauna_gi.jpg">
 
 Jacco Bikker posted new
 <a href="http://www.gamedev.net/community/forums/topic.asp?topic_id=529710">Arauna GI</a>
@@ -884,16 +1000,18 @@ before Jacco or one of his students calls GI update in every frame and starts
 tweaking quality to make it interactive.
 Go go!
 
-</td><td valign=top><img src="arauna_gi.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2009-03-24"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-03-24">
-OpenGL 3.1</a></th><td align=right>
-2009-03-24</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenGL 3.1
+</a><span>
+ 2009-03-24
+</span></div><img src=
+ "OpenGL.jpg" style="height:55px;">
 
 <a href="http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&Number=255002">OpenGL 3.1</a>
 says <a href="http://thru-you.com/#/videos/3/">I'm new</a>,
@@ -906,17 +1024,19 @@ Michael Larabel <a href="http://www.phoronix.com/scan.php?page=news_item&px=NzE2
 <p>
 Update: Must.. resist.. temptation.. rewrite.. everything.. for.. 3.1.<br>I'm weak, already rewriting.
 
-</td><td valign=top><img src="OpenGL.jpg" width=120 height=55 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
 
-<a name="2009-02-19"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-02-19">
-OpenCL in Gallium3D</a></th><td align=right>
-2009-02-19</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenCL in Gallium3D
+</a><span>
+ 2009-02-19
+</span></div><img src=
+ "OpenCL.png">
 
 Zack Rusin blogs about <a href="http://zrusin.blogspot.com/2009/02/opencl.html">
 free OpenCL implementation</a> in Gallium3D
@@ -927,17 +1047,19 @@ platform by summer 2009 looks wildly optimistic, however,
 as a Gallium3D developer who attended at least one OpenCL working group meeting,
 he is qualified to make such estimate. Thanks, Zack.
 
-</td><td valign=top><img src="OpenCL.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
 
-<a name="2009-02-14"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-02-14">
-The Once Known as SmallPT</a></th><td align=right>
-2009-02-14</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ The Once Known as SmallPT
+</a><span>
+ 2009-02-14
+</span></div><img src=
+ "tokaspt.jpg">
 
 Usually I don't blag about adding new item to the <a href="demos">list of demos</a>, but this time
 it's different, because I haven't added anything new for nearly 1.5 years.
@@ -958,16 +1080,18 @@ Scenes are made of roughly 10 spheres. It makes me wonder in good sense, we code
 can we make good gameplay with renderer limited to 10 spheres? I guess building games on Thierry's commented source code would be piece of cake.
 Any demo organizer here?
 
-</td><td valign=top><img src="tokaspt.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2009-01-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2009-01-02">
-Collada huge speedup</a></th><td align=right>
-2009-01-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Collada huge speedup
+</a><span>
+ 2009-01-02
+</span></div><img src=
+ "collada.png" style="height:25px;">
 
 It would be cool to have single interchange data format for 3d scenes.
 There's need for such format and there's nothing better than <a href="http://collada.org">Collada</a>,
@@ -981,32 +1105,36 @@ Recent good news is
 <a href="http://software.intel.com/en-us/blogs/2008/12/22/breaking-speed-record-in-collada-importexport/">huge speedup</a>
 of new collada max/maya import/export plugins.
 
-</td><td valign=top><img src="collada.png" width=120 height=25 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2008-12-09"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-12-09">
-OpenCL is out</a></th><td align=right>
-2008-12-09</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenCL is out
+</a><span>
+ 2008-12-09
+</span></div><img src=
+ "OpenCL.png">
 
 It's December and <a href="http://www.khronos.org/registry/cl/specs/opencl-1.0.29.pdf">OpenCL</a> specification is out.
 Let's make some advanced realtime stuff that runs everywhere...oh wait, where's platform runtime?
 <p>
 Update: this <a href="http://www.hardware.fr/medias/photos_news/00/24/IMG0024829.jpg">slide</a> at hardware.fr shows Nvidia plan: final runtime/driver is expected in the middle of 2009.
 
-</td><td valign=top><img src="OpenCL.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2008-10-08"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-10-08">
-OpenCL in December</a></th><td align=right>
-2008-10-08</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenCL in December
+</a><span>
+ 2008-10-08
+</span></div><img src=
+ "OpenCL.png">
 
 From <a href="http://www.hpcwire.com/blogs/OpenCL_On_the_Fast_Track_33608199.html">full article</a>:
 <i>
@@ -1017,16 +1145,18 @@ From <a href="http://www.hpcwire.com/blogs/OpenCL_On_the_Fast_Track_33608199.htm
 then it took huge delay. I don't expect huge delay this time as it's
 1.0 without burden of backwards compatibility.
 
-</td><td valign=top><img src="OpenCL.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2008-09-14"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-09-14">
-Imperfect Shadow Maps</a></th><td align=right>
-2008-09-14</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Imperfect Shadow Maps
+</a><span>
+ 2008-09-14
+</span></div><img src=
+ "box.jpg">
 
 See <a href="http://www.uni-koblenz.de/~ritschel/dokumente/ISM.pdf">
 Imperfect Shadow Maps for Efficient Computation of Indirect Illumination (pdf)</a>.
@@ -1036,7 +1166,7 @@ Paper doesn't show scaling, their 'complex' scenes are pretty medium,
 but I think it works and we will see it in a game in less than 10 years
 - if we survive all those ninja paradigm shifters throwing raytraced donuts.
 
-</td><td valign=top><img src="box.jpg" width=120 height=105 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
@@ -1044,10 +1174,12 @@ but I think it works and we will see it in a game in less than 10 years
 
 
 
-<a name="2008-09-10"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-09-10">
-Gamefest 2008 slides</a></th><td align=right>
-2008-09-10</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Gamefest 2008 slides
+</a><span>
+ 2008-09-10
+</span></div><img src=
+ "microsoft.jpg" style="height:105px;">
 
 <a href="http://www.xnagamefest.com/presentations08.htm">Gamefest 2008 presentations</a>
 are online.
@@ -1074,7 +1206,7 @@ Viewer says <cite>PowerPoint Viewer cannot open the file "Shedding Indirect Ligh
 Error in event log is <cite>Faulting application PPCNVCOM.EXE, version 12.0.6211.1000, time stamp 0x46ce621f, faulting module oartconv.dll, version 12.0.6214.1000, time stamp 0x47029c72, exception code 0xc0000005, fault offset 0x0022d94b, process id 0x3b78, application start time 0x01c912bcf5abd300.</cite>
 </small>
 
-</td><td valign=top><img src="microsoft.jpg" width=120 height=105 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
@@ -1082,10 +1214,12 @@ Error in event log is <cite>Faulting application PPCNVCOM.EXE, version 12.0.6211
 
 
 
-<a name="2008-09-09"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-09-09">
-Bouliiii's CUDA raytracing</a></th><td align=right>
-2008-09-09</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Bouliiii's CUDA raytracing
+</a><span>
+ 2008-09-09
+</span></div><img src=
+ "raytracing.jpg">
 
 See <a href="http://bouliiii.blogspot.com/2008/08/real-time-ray-tracing-with-cuda-100.html">
 Bouliiii's CUDA raytracer</a> (source code).
@@ -1100,7 +1234,7 @@ However, even with very roughly estimated 10x slowdown for indirect rays,
 this may be moment when GPUs overtake CPUs. No marketing fakes,
 here's the demo.
 
-</td><td valign=top><img src="raytracing.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
@@ -1108,10 +1242,12 @@ here's the demo.
 
 
 
-<a name="2008-09-05"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-09-05">
-GI in "Top 10 Game Technologies"</a></th><td align=right>
-2008-09-05</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ GI in "Top 10 Game Technologies"
+</a><span>
+ 2008-09-05
+</span></div><img src=
+ "box.jpg">
 
 Gameplayer lists (real-time) GI in <a href="http://www.gameplayer.com.au/gp_documents/Game-Technology.aspx?catid=Features&Page=2">Top 10 Game Technologies</a>
 <p>
@@ -1123,7 +1259,7 @@ in standard form
 <br>3.
 "If you don't believe us, go back and fire up the original Doom."
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
@@ -1131,10 +1267,12 @@ in standard form
 
 
 
-<a name="2008-08-16"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-08-16">
-OpenCL</a></th><td align=right>
-2008-08-16</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenCL
+</a><span>
+ 2008-08-16
+</span></div><img src=
+ "OpenCL.png">
 
 Siggraph brought news about <a href="http://s08.idav.ucdavis.edu/munshi-opencl.pdf">OpenCL (pdf presentation)</a>.
 <p>
@@ -1144,17 +1282,19 @@ Design looks like it could work on Cell too, although with terribly expensive ra
 Still, OpenCL would be good for Cell in PS3 development, because one would be able to test on PC
 and have roaring PS3 jet-engines turned off.
 
-</td><td valign=top><img src="OpenCL.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
 
-<a name="2008-08-14"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-08-14">
-OpenGL 3.0</a></th><td align=right>
-2008-08-14</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenGL 3.0
+</a><span>
+ 2008-08-14
+</span></div><img src=
+ "OpenGL.jpg" style="height:55px;">
 
 One year late, <a href="http://www.khronos.org/opengl/">OpenGL 3.0</a> is out and it doesn't bring promised changes ('new API').
 This <a href="http://forum.beyond3d.com/showthread.php?t=48978">thread</a> shows what probably happened behind the doors:
@@ -1189,17 +1329,19 @@ Plans are to layer OpenCL on top of CAL that evolved from CTM.
 However effect is the same, mainstream app developers won't use proprietary
 API if they get portable one.
 
-</td><td valign=top><img src="OpenGL.jpg" width=120 height=55 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
 
-<a name="2008-08-06"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-08-06">
-Lightsmark 2008</a></th><td align=right>
-2008-08-06</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Lightsmark 2008
+</a><span>
+ 2008-08-06
+</span></div><img src=
+ "Lightsmark.jpg">
 
 After one year of work, <a href="http://dee.cz/lightsmark">Lightsmark 2008</a>,
 realtime GI benchmark,
@@ -1208,15 +1350,17 @@ Enjoy.
 <p>
 Update: users report scores over 700 fps.
 
-</td><td valign=top><img src="Lightsmark.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2008-08-03"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-08-03">
-The end of bad lighting in games?</a></th><td align=right>
-2008-08-03</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ The end of bad lighting in games?
+</a><span>
+ 2008-08-03
+</span></div><img src=
+ "id.jpg">
 
 Several years ago, undisclosed game studio manager
 _watched_ latest id software game. He said it _looks_ extremely bad.
@@ -1227,15 +1371,17 @@ he just had no words for it because he was manager.
 Finally, <a href="http://www.shacknews.com/featuredarticle.x?id=956">id gets it too</a>.
 <cite>Carmack explained that he found some of the complaints of Doom 3's brand of horror to be "completely valid," saying that the "contrived nature of monsters hiding in a closet" and the extreme darkness were two things that caused the company to cancel its game Darkness and begin production of Rage.</cite>
 
-</td><td valign=top><img src="id.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2008-07-08"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-07-08">
-Let there be light (realtime raytracing)</a></th><td align=right>
-2008-07-08</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Let there be light (realtime raytracing)
+</a><span>
+ 2008-07-08
+</span></div><img src=
+ "raytracing.jpg">
 
 Another realtime raytraced game based on Arauna was released - <a href="http://www.gamedev.net/community/forums/topic.asp?topic_id=499990">Let there be light</a>.
 It immediately crashes before displaying first frame.
@@ -1248,15 +1394,17 @@ realistic lighting. With zero or constant ambient, it looks less realistically t
 Of course there are ways how to improve lighting and even without looking into Arauna,
 I'm sure Jacco has something in development.
 
-</td><td valign=top><img src="raytracing.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2008-06-14"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-06-14">
-OpenMP 3.0</a></th><td align=right>
-2008-06-14</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenMP 3.0
+</a><span>
+ 2008-06-14
+</span></div><img src=
+ "OpenMP.png" style="height:42px;">
 
 OpenMP 3.0 <a href="http://www.openmp.org/mp-documents/spec30.pdf">final spec</a> was published.
 See <a href="http://cobweb.ecn.purdue.edu/ParaMount/iwomp2008/documents/omp30.pdf%20target=">what's new</a>.
@@ -1264,14 +1412,16 @@ It's no help until there are compilers supporting it, so
 good news: OpenMP 3.0 support was merged into gcc 4.4,
 version currently in development, to be released probably in a few months.
 
-</td><td valign=top><img src="OpenMP.png" width=120 height=51 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2008-06-08"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-06-08">
-Redway3d demo</a></th><td align=right>
-2008-06-08</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Redway3d demo
+</a><span>
+ 2008-06-08
+</span></div><img src=
+ "redway3d.jpg">
 
 Redway3d is one of several smaller raytracing companies out there.
 I never mentioned them because I had no chance to see their results.
@@ -1281,16 +1431,18 @@ Lighting looks conventionally and general impression is way behind Outbound,
 so I'm not adding it to demos, however, kudos for releasing executable.
 Btw, watch hand disappears when manually zooming.
 
-</td><td valign=top><img src="redway3d.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2008-06-07"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-06-07">
-Pete Shirley in Nvidia</a></th><td align=right>
-2008-06-07</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Pete Shirley in Nvidia
+</a><span>
+ 2008-06-07
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 It's cracking in pure raytracing camp, Pete Shirley admitted that
 <a href="http://psgraphics.blogspot.com/2008/05/new-pastures.html">pure raytracing is no go</a>
@@ -1299,16 +1451,18 @@ It's cracking in pure raytracing camp, Pete Shirley admitted that
 </cite>
 and joined Nvidia.
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2008-06-01"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-06-01">
-Outbound (realtime raytracing)</a></th><td align=right>
-2008-06-01</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Outbound (realtime raytracing)
+</a><span>
+ 2008-06-01
+</span></div><img src=
+ "outbound.jpg">
 
 After years of confusion and marketing abuse, realtime raytracing
 finally appears in game. I mean, not just in marketing materials
@@ -1332,16 +1486,18 @@ specular reflection, refraction and some strange noise.
 <br>One extremely important point I forgot to mention: source code
 of Outbound engine, Arauna, is available too.
 
-</td><td valign=top><img src="outbound.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2008-04-30"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-04-30">
-Benchmark cheating bug</a></th><td align=right>
-2008-04-30</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Benchmark cheating bug
+</a><span>
+ 2008-04-30
+</span></div><img src=
+ "bug.jpg">
 
 Zigzag between driver bugs is my daily bread, but this one is funny:
 <a href="http://dee.cz/lightsmark">Lightsmark</a> compiled on Linux,
@@ -1355,15 +1511,17 @@ Update: problem disappeared after several changes in rendering code.
 I haven't tried to track it down to one-line change, but changes were related
 to display lists.
 
-</td><td valign=top><img src="bug.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2008-04-26"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-04-26">
-Note on parallelism</a></th><td align=right>
-2008-04-26</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Note on parallelism
+</a><span>
+ 2008-04-26
+</span></div><img src=
+ "parallelism.jpg">
 
 Only as a curiosity - Donald Knuth is <a href="http://www.informit.com/articles/article.aspx?p=1193856">
 not enthusiastic about parallelism</a>.
@@ -1385,40 +1543,46 @@ will be implemented in sw.
 ideally <a href="http://www.aeiveos.com:8080/~bradbury/MatrioshkaBrains/MatrioshkaBrainsPaper.html">
 Matrioshka Brains</a>.
 
-</td><td valign=top><img src="parallelism.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2008-04-24"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-04-24">
-Note on marketing</a></th><td align=right>
-2008-04-24</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Note on marketing
+</a><span>
+ 2008-04-24
+</span></div><img src=
+ "Intel.png" style="height:51px;">
 
 Another guy thinks raytracing by Intel is
 <a href="http://forum.beyond3d.com/showpost.php?p=1147026&postcount=24">
 sophisticated marketing campaign</a>. He explains why.
 
-</td><td valign=top><img src="Intel.png" width=120 height=51 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2008-04-23b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-04-23b">
-Meshless Finite Elements for Hierarchical Global Illumination</a></th><td align=right>
-2008-04-23</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Meshless Finite Elements for Hierarchical Global Illumination
+</a><span>
+ 2008-04-23
+</span></div><img src=
+ "box.jpg">
 
 See <a href="http://www.tml.tkk.fi/~jaakko/meshless-tr/meshless-TR-TML-B7.pdf">
 Meshless Finite Elements for Hierarchical Global Illumination</a>.
 <br> Summary: radiosity is back and kicking
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2008-04-23"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-04-23">
-MinGW progress</a></th><td align=right>
-2008-04-23</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ MinGW progress
+</a><span>
+ 2008-04-23
+</span></div><img src=
+ "gcc.jpg">
 
 <a href="http://code.google.com/soc/2008/gcc/appinfo.html?csaid=E9374E6D3D6980BB">GCC Improvements on Windows</a>
 was accepted into Goggle summer of code.
@@ -1429,14 +1593,16 @@ Update at the end of summer:
 It seems Aaron reached rougly 50% of his goals.
 Still I think it's an excellent result.
 
-</td><td valign=top><img src="gcc.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2008-03-27"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-03-27">
-Note on picking challenges</a></th><td align=right>
-2008-03-27</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Note on picking challenges
+</a><span>
+ 2008-03-27
+</span></div><img src=
+ "vista_x64.jpg">
 
 Rendering needs lots of memory. Clients need Windows.
 These two powers pushed me into Vista x64.
@@ -1450,14 +1616,16 @@ jump realtime raytracing hype and solve rendering equation with single ray? ;)
 <br>
 Update: Vista x64 is much better after RAM replacement, only one BSOD in 5 days.
 
-</td><td valign=top><img src="vista_x64.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2008-03-12"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2008-03-12">
-Carmack on raytracing</a></th><td align=right>
-2008-03-12</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Carmack on raytracing
+</a><span>
+ 2008-03-12
+</span></div><img src=
+ "raytracing.jpg">
 
 Now also <a href="http://www.pcper.com/article.php?aid=532&type=overview">
 John Carmack talks about raytracing</a>.
@@ -1468,52 +1636,60 @@ So John's opinion doesn't surprise. However, he adds something I haven't
 realized before: by buying Project Offset, Intel probably starts
 work on hard evidence, creating real demo or game. It would be nice, finally!
 
-</td><td valign=top><img src="raytracing.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2007-12-17"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-12-17">
-OpenMP 3.0</a></th><td align=right>
-2007-12-17</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenMP 3.0
+</a><span>
+ 2007-12-17
+</span></div><img src=
+ "OpenMP.png" style="height:42px;">
 
 OpenMP 3.0 <a href="http://www.openmp.org/drupal/mp-documents/spec30_draft.pdf">draft</a> was published 
 (5 days after I wrote that OpenMP doesn't help with task prioritization).
 It's possible that Task Queues will help.
 
-</td><td valign=top><img src="OpenMP.png" width=120 height=51 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2007-11-10"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-11-10">
-Statistics</a></th><td align=right>
-2007-11-10</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Statistics
+</a><span>
+ 2007-11-10
+</span></div><img src=
+ "lightsmark-popular.png">
 
 Update: It's nice to <a href="http://www.googlefight.com/index.php?lang=en_GB&word1=3dmark&word2=lightsmark">google fight with 3dmark</a> ;)
 
-</td><td valign=top><img src="lightsmark-popular.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2007-10-24c"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-10-24c">
-Lightsmark</a></th><td align=right>
-2007-10-24</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Lightsmark
+</a><span>
+ 2007-10-24
+</span></div><img src=
+ "Lightsmark.jpg">
 
 I published new demo, <a href="http://dee.cz/lightsmark">Lightsmark</a>,
 with engine 10x faster than my previous one.
 
-</td><td valign=top><img src="Lightsmark.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2007-10-24b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-10-24b">
-Real-Time Ray Tracing : Holy Grail or Fools' Errand?</a></th><td align=right>
-2007-10-24</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Real-Time Ray Tracing : Holy Grail or Fools' Errand?
+</a><span>
+ 2007-10-24
+</span></div><img src=
+ "raytracing.jpg">
 
 <a href="http://www.beyond3d.com/content/news/511">Real-Time Ray Tracing : Holy Grail or Fools' Errand?</a>
 very differs from tens or hundreds of mainstream articles on realtime raytracing.
@@ -1525,15 +1701,17 @@ is wrong, no RTGI framework exists?
 I offered one <a href="http://dee.cz/rri">two years ago</a>.
 Sure it's not perfect, but demos show that use in games is possible.
 
-</td><td valign=top><img src="raytracing.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2007-10-24"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-10-24">
-Thread priorities</a></th><td align=right>
-2007-10-24</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Thread priorities
+</a><span>
+ 2007-10-24
+</span></div><img src=
+ "Intel.png" style="height:51px;">
 
 I finally killed the boss at the end of "happy with OpenMP" level
 and entered "needs prioritized threads" level. 
@@ -1547,16 +1725,18 @@ Intel answers,
 it probably is not</a>, but at least, it is still under development.
 So... finally I manage threads 'manually'.
 
-</td><td valign=top><img src="Intel.png" width=120 height=51 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-09-25"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-09-25">
-How to quantize in 500000-dimensional space?</a></th><td align=right>
-2007-09-25</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ How to quantize in 500000-dimensional space?
+</a><span>
+ 2007-09-25
+</span></div><img src=
+ "box.jpg">
 
 Back in VGA times, I
 quantized in 3-d by brute force, assembler and big table.
@@ -1570,17 +1750,19 @@ Realtime global illumination is not pixel perfect.
 How do I quantize in 500000-dimensional space, quickly?
 <br> What, NP hard? Starting assembler...
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
 
-<a name="2007-09-07"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-09-07">
-Search for the most complex shader</a></th><td align=right>
-2007-09-07</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Search for the most complex shader
+</a><span>
+ 2007-09-07
+</span></div><img src=
+ "Dee.jpg">
 
 It's common to have several versions of shader, simple one for low end cards, complex
 one for high end cards (so complex that it would not run on low end) etc.
@@ -1620,15 +1802,17 @@ Ready?...go!
 After 45 years of pure research without drivers, problem is still open.
 Nice <a href="http://www.scottaaronson.com/writings/bignumbers.html">intro article</a>. It's about beavers too.
 
-</td><td valign=top><img src="Dee.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2007-09-05"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-09-05">
-Realtime Global Illumination for next generation games</a></th><td align=right>
-2007-09-05</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime Global Illumination for next generation games
+</a><span>
+ 2007-09-05
+</span></div><img src=
+ "EuroGraphics.png">
 
 I'm back from my "Realtime Global Illumination for next generation games"
 talk at Eurographics.
@@ -1640,16 +1824,18 @@ I wasn't able to say 3 proper sentences in a row.
 At conference room, everything was perfect.
 I'm better in realtime, precalculations are not for me.
 
-</td><td valign=top><img src="EuroGraphics.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-09-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-09-02">
-Real-Time Ambient Map by CryTek</a></th><td align=right>
-2007-09-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Real-Time Ambient Map by CryTek
+</a><span>
+ 2007-09-02
+</span></div><img src=
+ "Crytek-RAM.jpg">
 
 CryTek published more details on their Real-Time Ambient Map technique,
 to be used in Crysis, to be released soon.
@@ -1685,16 +1871,18 @@ However it's very inexpensive for end user (gamer), so chances are good
 that it will be adopted by several other 
 engines before fully automated physically based RTGI techniques take lead.
 
-</td><td valign=top><img src="Crytek-RAM.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-08-29"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-08-29">
-MinGW gcc 4.2.1</a></th><td align=right>
-2007-08-29</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ MinGW gcc 4.2.1
+</a><span>
+ 2007-08-29
+</span></div><img src=
+ "gcc.jpg">
 
 After many years of work,
 <a href="http://mingw.org">MinGW</a> released <a href="http://sourceforge.net/project/showfiles.php?group_id=2435">technical preview of first version 
@@ -1724,16 +1912,18 @@ It's still nice to use gcc. It has the best warnings of all compilers,
 it always finds some error that was completely ignored by 
 other compilers.
 
-</td><td valign=top><img src="gcc.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-08-14"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-08-14">
-C++0x progress</a></th><td align=right>
-2007-08-14</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ C++0x progress
+</a><span>
+ 2007-08-14
+</span></div><img src=
+ "Bjarne.jpg">
 
 C++ language designer <a href="http://www.research.att.com/~bs/">Bjarne Stroustrup</a>
 described current state of C++0x
@@ -1747,16 +1937,18 @@ It seems only remotely related to rendering, however it has some importance
 for me as my code is heavily templated and new language features may simplify
 it.
 
-</td><td valign=top><img src="Bjarne.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-07-25"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-07-25">
-Threading Building Blocks under GPL</a></th><td align=right>
-2007-07-25</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Threading Building Blocks under GPL
+</a><span>
+ 2007-07-25
+</span></div><img src=
+ "Intel.png" style="height:51px;">
 
 Intel has released <a href="ThreadingBuildingBlocks.org">Threading Building
 Blocks</a> under GPL 2.
@@ -1777,16 +1969,18 @@ creating more complex and more powerful API.
 I have no reason to switch to TBB, OpenMP is perfect and 100% efficient for me,
 but if I find it insufficient one day, TBB is first API I'll look at.
 
-</td><td valign=top><img src="Intel.png" width=120 height=51 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-07-21c"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-07-21c">
-Implicit Visibility and Antiradiance for Interactive Global Illumination</a></th><td align=right>
-2007-07-21</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Implicit Visibility and Antiradiance for Interactive Global Illumination
+</a><span>
+ 2007-07-21
+</span></div><img src=
+ "oriental.jpg">
 
 Check <a href="http://www-sop.inria.fr/reves/Basilic/2007/DSDD07/ImplicitVisibilityAndAntiradiance.pdf">Implicit Visibility and Antiradiance for Interactive Global Illumination</a>
 paper, one of the best works!
@@ -1794,30 +1988,34 @@ According to video, it's much slower than Lightsprint with features nearly ident
 And Carsten is scener, yay!
 Bad luck there's no demo... maybe at The Gathering or BreakPoint?
 
-</td><td valign=top><img src="oriental.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-07-21b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-07-21b">
-New demos</a></th><td align=right>
-2007-07-21</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ New demos
+</a><span>
+ 2007-07-21
+</span></div><img src=
+ "RealtimeRadiosityBlog.jpg" style="height:90px;">
 
 Massive update of <a href="demos">Demos</a> page.
 Lots of new demos.
 
-</td><td valign=top><img src="RealtimeRadiosityBlog.jpg" width=120 height=90 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-07-21"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-07-21">
-Incremental Instant Radiosity for Real-Time Indirect Illumination</a></th><td align=right>
-2007-07-21</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Incremental Instant Radiosity for Real-Time Indirect Illumination
+</a><span>
+ 2007-07-21
+</span></div><img src=
+ "laine2007egsr.jpg" style="height:98px;">
 
 <a href="http://www.tml.tkk.fi/~timo/publications/laine2007egsr_paper.pdf">Incremental Instant Radiosity for Real-Time Indirect Illumination</a>
 paper is another attepmt to kill instant radiosity artifacts.
@@ -1825,48 +2023,54 @@ It makes things simpler, although less correct, by rendering only first indirect
 No demo, so one can't see how good/bad it is this time.
 <br>Note: You can see at least one instant radiosity based demo in <a href="demos">Demos</a> section.
 
-</td><td valign=top><img src="laine2007egsr.jpg" width=120 height=98 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-05-19"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-05-19">
-Find all demos here</a></th><td align=right>
-2007-05-19</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Find all demos here
+</a><span>
+ 2007-05-19
+</span></div><img src=
+ "RealtimeRadiosityBlog.jpg" style="height:90px;">
 
 As you can see above, I added page <a href="demos">Demos</a>.
 I fill it with links to executable demos of realtime global illumination
 and additional information like papers, source code...
 
-</td><td valign=top><img src="RealtimeRadiosityBlog.jpg" width=120 height=90 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
 
-<a name="2007-05-05"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-05-05">
-Realtime Global Illumination at GDS 2007</a></th><td align=right>
-2007-05-05</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime Global Illumination at GDS 2007
+</a><span>
+ 2007-05-05
+</span></div><img src=
+ "Dee.jpg">
 
 I'll have a Realtime Global Illumination talk 
 at <a href="http://ceskehry.cz/gds/gds2007.html">Game Developers Session 2007</a> next week.
 Come in and see the bleeding edge demos,
 including bits of the one I'm cooking right now :)
 
-</td><td valign=top><img src="Dee.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2007-04-21"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-04-21">
-More interpolators with ForceWare 158.19</a></th><td align=right>
-2007-04-21</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ More interpolators with ForceWare 158.19
+</a><span>
+ 2007-04-21
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 I see that recent Nvidia drivers <a href="http://www.nvidia.com/object/winxp_2k_158.19.html">ForceWare 158.19</a>
 are able to compile and run more complex GLSL shaders, with 1-2 more interpolators than previously
@@ -1875,30 +2079,34 @@ In <a href="http://lightsprint.com">Lightsprint Demo</a>, this immediately, with
 produces smoother Penumbra Shadows.
 Good work Nvidia!
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
  
-<a name="2007-03-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-03-02">
-Lightsprint Demo, Realtime Global Illumination</a></th><td align=right>
-2007-03-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Lightsprint Demo, Realtime Global Illumination
+</a><span>
+ 2007-03-02
+</span></div><img src=
+ "LightsprintDemo.jpg">
 
  Check <a href="http://lightsprint.com">Lightsprint Demo</a>, brand new piece
  with shiny female characters. Of course globally illuminated!
 
-</td><td valign=top><img src="LightsprintDemo.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
  
-<a name="2007-02-11"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-02-11">
-Realtime raytracing by Intel</a></th><td align=right>
-2007-02-11</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime raytracing by Intel
+</a><span>
+ 2007-02-11
+</span></div><img src=
+ "Intel.png" style="height:51px;">
 
  Check this <a href="http://216.239.59.104/search?q=cache:http://www.computerpoweruser.com/editorial/article.asp?article=articles/archive/c0609/67c09/67c09.asp&guid=">
  Q&A With Jerry Bautista</a>, research head at Intel.
@@ -1906,32 +2114,36 @@ Realtime raytracing by Intel</a></th><td align=right>
  <br>A: Our horizon is three to five years. We are at about a three-year point in terms of showing that these things can be done.</i>
  <br>Yeah, this playground has lots of room for more cores, welcome Intel!
 
-</td><td valign=top><img src="Intel.png" width=120 height=51 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
  
-<a name="2007-02-09"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2007-02-09">
-Interactive k-D Tree GPU Raytracing</a></th><td align=right>
-2007-02-09</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Interactive k-D Tree GPU Raytracing
+</a><span>
+ 2007-02-09
+</span></div><img src=
+ "kitchen.jpg">
 
  <a href="http://graphics.stanford.edu/papers/i3dkdtree/">Interactive k-D Tree GPU Raytracing</a>
  (2007) advances raytracing on GPU. Good work!
  It's still 50x slower that rasterization in rendering shadows,
  but specular bounces rock, rasterizers can't fake this.
 
-</td><td valign=top><img src="kitchen.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
 
-<a name="2006-12-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-12-02">
-CTM, CUDA go public</a></th><td align=right>
-2006-12-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ CTM, CUDA go public
+</a><span>
+ 2006-12-02
+</span></div><img src=
+ "Dee.jpg">
 
 It took some time,
 but finally both CTM and CUDA, new APIs for GPUs, are available to broad 
@@ -1939,29 +2151,33 @@ developer community, not only to few universities.
 In CTM case, one only needs to break psychic barrier and fill
 request form with first required field "University:" :)
 
-</td><td valign=top><img src="Dee.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-11-18"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-18">
-ARB responds fast to "Power of version numbers"</a></th><td align=right>
-2006-11-18</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ ARB responds fast to "Power of version numbers"
+</a><span>
+ 2006-11-18
+</span></div><img src=
+ "OpenGL.jpg" style="height:55px;">
 
 Few hours ago, <a href="http://www.opengl.org/pipeline/vol002/">OpenGL 
 Pipeline Newsletter 002</a> with sexy names for future
 OpenGL releases was published. DX10 is dead.
 
-</td><td valign=top><img src="OpenGL.jpg" width=120 height=55 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-11-13"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-13">
-Stricter GLSL by Nvidia</a></th><td align=right>
-2006-11-13</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Stricter GLSL by Nvidia
+</a><span>
+ 2006-11-13
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 Developing on Nvidia, but targetting all graphics cards, was painful.
 Unlike ATI (that was so strict it had problem compile 
@@ -1973,15 +2189,17 @@ compiler still accepts such incompatibilities, but emits warnings
 and it is possible to switch to strict mode where it reports them as errors.
 Thanks!
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-11-10"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-10">
-Power of version numbers</a></th><td align=right>
-2006-11-10</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Power of version numbers
+</a><span>
+ 2006-11-10
+</span></div><img src=
+ "Dee.jpg">
 
 OpenGL support for G80 is clearly superior to DX10 -
 it is publically available now for everyone on several operating systems,
@@ -1995,29 +2213,33 @@ on front pages, G80 supports OpenGL100! Of course this won't happen.
 Process behind OpenGL standardization is its main advantage,
 the only drawback is that it doesn't generate so cool numbers for marketing.
 
-</td><td valign=top><img src="Dee.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-11-09b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-09b">
-OpenGL extensions released</a></th><td align=right>
-2006-11-09</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenGL extensions released
+</a><span>
+ 2006-11-09
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 OpenGL extensions for G80 were released, cool, great work Nvidia!
 <br><a href="http://developer.download.nvidia.com/opengl/specs/g80specs.pdf ">GeForce 8 Series (G8X) OpenGL Extensions</a>
 <br><a href="http://developer.download.nvidia.com/opengl/glsl/glsl_release_notes.pdf">Release Notes for NVIDIA OpenGL Shading Language Support (Oct 27 2006)</a>
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-11-09"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-09">
-G80 was released</a></th><td align=right>
-2006-11-09</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ G80 was released
+</a><span>
+ 2006-11-09
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 Read <a href="http://www.beyond3d.com/forum/showthread.php?t=35443">Beyond3D forum</a>
 and great <a href="http://www.techreport.com/reviews/2006q4/geforce-8800/index.x?pg=1">techreport.com article</a>
@@ -2026,15 +2248,17 @@ for info on G80 hardware architecture.
 Was it forbidden to mention drivers in reviewer's guide? ;)
 
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-11-08b"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-08b">
-Why we don't have single API</a></th><td align=right>
-2006-11-08</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Why we don't have single API
+</a><span>
+ 2006-11-08
+</span></div><img src=
+ "Dee.jpg">
 
 When there were more than 10 vendors, universal APIs like VESA BIOS, 
 OpenGL and Direct3D emerged. 
@@ -2067,15 +2291,17 @@ those multi- look clearly better; see eg. how well specified is
 OpenGL in comparison to DirectX.
 DirectX must be rewritten each 2 years to catch up with OpenGL ;)
 
-</td><td valign=top><img src="Dee.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-11-08"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-08">
-CUDA</a></th><td align=right>
-2006-11-08</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ CUDA
+</a><span>
+ 2006-11-08
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 NVIDIA responds to AMD's GPGPU API by it's own approach - 
 <a href="http://developer.nvidia.com/object/cuda.html">CUDA</a>.
@@ -2083,14 +2309,16 @@ What's common with AMD?
 <br>Is it freely available? Doesn't seem so.
 <br>Will it run on both NVIDIA and AMD cards? No.
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2006-11-07"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-07">
-GL extensions for G80 (more waiting)</a></th><td align=right>
-2006-11-07</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ GL extensions for G80 (more waiting)
+</a><span>
+ 2006-11-07
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 <a href="http://www.opengl.org/discussion_boards/ubb/ultimatebb.php?ubb=get_topic;f=3;t=014831#000000">This post</a>
 lists 35 new OpenGL extension names
@@ -2098,14 +2326,16 @@ lists 35 new OpenGL extension names
 Nvidia drivers. It could be work in progress, but chances rise that
 tomorrow's G80 release will come together with an API. Good!
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2006-11-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-11-02">
-G80 tech details (more waiting)</a></th><td align=right>
-2006-11-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ G80 tech details (more waiting)
+</a><span>
+ 2006-11-02
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 More G80 tech details on <a href="http://www.theinquirer.net/default.aspx?article=35483">the Inquirer</a>
 (see <a href="http://www.beyond3d.com/forum/showthread.php?t=33576">Beyond3D</a> too).
@@ -2115,14 +2345,16 @@ Realtime radiosity won't get big boost if it's only for few lucky,
 cheaper stripped down versions coming probably next spring
 (together with competition from AMD) will make us much better service.
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
-<a name="2006-10-31"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-10-31">
-Waiting for G80</a></th><td align=right>
-2006-10-31</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Waiting for G80
+</a><span>
+ 2006-10-31
+</span></div><img src=
+ "nvidia.jpg" style="height:80px;">
 
 Launch of NVIDIA G80 GPU is behind doors.
 Lots of advanced effects including
@@ -2145,54 +2377,62 @@ On the other fronts, AMD/ATI is a few months behind with the same new features
 scheduled for release probably soon next year. Others are not
 likely to catch up, although S3 is rumoured to work on SM4.0 card too.
 
-</td><td valign=top><img src="nvidia.jpg" width=120 height=80 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-10-29"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-10-29">
-Realtime Radiosity everywhere 3: essay</a></th><td align=right>
-2006-10-29</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime Radiosity everywhere 3: essay
+</a><span>
+ 2006-10-29
+</span></div><img src=
+ "box.jpg">
 
 <a href="essay.htm">An essay on realtime radiosity</a> generated by 
 <a href="http://essaygenerator.com">essaygenerator</a>.
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-10-16"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-10-16">
-Interview</a></th><td align=right>
-2006-10-16</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Interview
+</a><span>
+ 2006-10-16
+</span></div><img src=
+ "Dee.jpg">
 
 I was <a href="http://3d-test.com/interviews/lightsprint_1.htm">interviewed</a>
 on realtime radiosity by 3d-test.com.
 
-</td><td valign=top><img src="Dee.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-10-10"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-10-10">
-Eurographics 2006 downloads</a></th><td align=right>
-2006-10-10</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Eurographics 2006 downloads
+</a><span>
+ 2006-10-10
+</span></div><img src=
+ "EuroGraphics.png">
 
  All Eurographics 2006 GmG contestants (including Realtime Radiosity Bugs) are
  <a href="http://www.cg.tuwien.ac.at/events/EG06/program-gamescompetition.php">available for download</a>.
 
-</td><td valign=top><img src="EuroGraphics.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-10-07"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-10-07">
-Realtime Radiosity everywhere 2</a></th><td align=right>
-2006-10-07</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime Radiosity everywhere 2
+</a><span>
+ 2006-10-07
+</span></div><img src=
+ "RealtimeRadiosityBugs.jpg">
 
 Realtime radiosity gets popular.
 Some guys work on <a href="http://developer.valvesoftware.com/wiki/Periculum">realtime radiosity game</a>.
@@ -2200,15 +2440,17 @@ Hohoo, I don't know them but I like their screenshots,
 very good work with light ;)
 (somehow reminds me <a href="http://dee.cz/rrb">my shots</a>)
 
-</td><td valign=top><img src="RealtimeRadiosityBugs.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-10-04"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-10-04">
-QuteMol</a></th><td align=right>
-2006-10-04</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ QuteMol
+</a><span>
+ 2006-10-04
+</span></div><img src=
+ "QuteMol.jpg">
 
 <a href="http://qutemol.sourceforge.net">QuteMol</a> renders molecules
 with direct illumination from sun and scattered daylight.
@@ -2223,15 +2465,17 @@ it can even improve image quality.
 I found this effect two years ago and I overlap shadowmaps everywhere
 since then ;)
 
-</td><td valign=top><img src="QuteMol.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-10-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-10-02">
-Realtime Radiosity everywhere</a></th><td align=right>
-2006-10-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime Radiosity everywhere
+</a><span>
+ 2006-10-02
+</span></div><img src=
+ "box.jpg">
 
 I spent some time googling for realtime radiosity news to feed you, my beloved readers ;).
 Startups start popping around with realtime radiosity announcements. No papers or demos, pure marketing.
@@ -2241,29 +2485,33 @@ Several big players with tons of manpower started to emit realtime radiosity or 
 marketing (without papers or demos) too.
 Comon and release, it's not stimulating to work on the only <a href="http://dee.cz/rrb">demo</a> on the block.
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-10-01"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-10-01">
-ATI's Stream Computing announcement</a></th><td align=right>
-2006-10-01</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ ATI's Stream Computing announcement
+</a><span>
+ 2006-10-01
+</span></div><img src=
+ "ATI.png" style="height:85px;">
 
 Expected <a href="http://ir.ati.com/phoenix.zhtml?c=105421&p=irol-newsArticle&ID=910519&highlight=">announcement</a>
 with standard stuff like comparing our new product with competitor's
 very old product. No link to download new GPGPU libs, they are just "pioneering".
 
-</td><td valign=top><img src="ATI.png" width=120 height=85 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-21"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-21">
-Will ATI deliver FireStream?</a></th><td align=right>
-2006-09-21</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Will ATI deliver FireStream?
+</a><span>
+ 2006-09-21
+</span></div><img src=
+ "ATI.png" style="height:85px;">
 
 Seems that more news on ATI's GPGPU business (could be good news also for realtime radiosity) are going to be 
 <a href="http://www.theregister.co.uk/2006/09/19/ati_gpgpu/">revealed on Sept 29</a>.
@@ -2277,30 +2525,34 @@ ready, while lower end parts are marketed with OpenGL 1.5 or even OpenGL 1.4 sup
 Fortunately even quite low end cards with new driver run fine with OpenGL 2.0
 (GLSL and other stuff).
 
-</td><td valign=top><img src="ATI.png" width=120 height=85 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-20"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-20">
-Eurographics 2006 contest results</a></th><td align=right>
-2006-09-20</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Eurographics 2006 contest results
+</a><span>
+ 2006-09-20
+</span></div><img src=
+ "EuroGraphics.png">
 
  Eurographics 2006 contest results were finally
  <a href="http://www.cg.tuwien.ac.at/events/EG06/program-gamescompetition.php">published</a>.
  (<a href="http://dee.cz/rrb">Realtime Radiosity Bugs</a> participated)
  <i>While novelty was the main criteria to choose the 8 contestants, naturally the "fun factor" of the games had a significant impact on the audience vote.</i>
 
-</td><td valign=top><img src="EuroGraphics.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
  
-<a name="2006-09-17"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-17">
-Radiosity on Graphics Hardware</a></th><td align=right>
-2006-09-17</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Radiosity on Graphics Hardware
+</a><span>
+ 2006-09-17
+</span></div><img src=
+ "Coombe.jpg">
 
  <a href="http://www.cs.unc.edu/~coombe/research/radiosity/">Radiosity on Graphics Hardware</a>
  (2004) describes nice radiosity on GPU technique.
@@ -2324,28 +2576,32 @@ Radiosity on Graphics Hardware</a></th><td align=right>
  lights&shadowmaps and smooth indirect illum by Coombe.
  This will make you pop star ;)
 
-</td><td valign=top><img src="Coombe.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-15"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-15">
-Realtime Radiosity Bugs released</a></th><td align=right>
-2006-09-15</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime Radiosity Bugs released
+</a><span>
+ 2006-09-15
+</span></div><img src=
+ "RealtimeRadiosityBugs.jpg">
 
  <a href="http://dee.cz/rrb">Realtime Radiosity Bugs</a> were finally released,
  tested on both NVIDIA and ATI cards. Enjoy!
 
-</td><td valign=top><img src="RealtimeRadiosityBugs.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-14"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-14">
-Rewrite for each new Catalyst</a></th><td align=right>
-2006-09-14</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Rewrite for each new Catalyst
+</a><span>
+ 2006-09-14
+</span></div><img src=
+ "ATI.png" style="height:85px;">
 
 I'm back from shop with a shiny new Radeon with an ugly creature on cover
 (ok, no joking, marketing guys with GeForce cards believe in ugly creatures too).
@@ -2366,15 +2622,17 @@ Maybe it's time to rewrite code for each new Catalyst?
 <br>And why NVIDIA doesn't make us suffer too,
 they use some insane techniques from books like regression tests, don't they?
 
-</td><td valign=top><img src="ATI.png" width=120 height=85 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-13"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-13">
-Am I business?</a></th><td align=right>
-2006-09-13</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Am I business?
+</a><span>
+ 2006-09-13
+</span></div><img src=
+ "Dee.jpg">
 
 I use to think about myself as a business (in contrast to academic research),
 because I left the university with Masters degree while my friends stayed
@@ -2386,15 +2644,17 @@ The real business is made by people, who claim they can
 <a href="http://www.tgdaily.com/2006/09/12/adobe_photoshop_premiere_elements_50/">
 turn any color image to a black-and-white picture</a>.
 
-</td><td valign=top><img src="Dee.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-12"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-12">
-Why realtime radiosity matters?</a></th><td align=right>
-2006-09-12</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Why realtime radiosity matters?
+</a><span>
+ 2006-09-12
+</span></div><img src=
+ "box.jpg">
 
 Academic science doesn't necessarily solve all problems.
 Known papers concentrate on rendering with higher and higher quality.
@@ -2442,15 +2702,17 @@ current trend is to make everything destructible, even walls.
 Soon game developers will
 start looking around for fast global illumination in dynamic scenes.
 
-</td><td valign=top><img src="box.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-08"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-08">
-OpenMP in gcc</a></th><td align=right>
-2006-09-08</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ OpenMP in gcc
+</a><span>
+ 2006-09-08
+</span></div><img src=
+ "gcc.jpg">
 
 <a href="http://openmp.org"><b>OpenMP</b></a> is a great API for
 guys working on multithreaded renderers,
@@ -2461,15 +2723,17 @@ however last 2 weeks after <a href="http://gcc.gelato.org/MoscowMeeting">Moscow 
 and <a href="http://gcc.gnu.org/ml/gcc/2006-08/msg00415.html">regression hack-a-thon</a>
 showed unbelievable progress with serious bug count going from 160 to 105. Go go gcc 4.2!
 
-</td><td valign=top><img src="gcc.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-07"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-07">
-Who produces faster code, research or business?</a></th><td align=right>
-2006-09-07</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Who produces faster code, research or business?
+</a><span>
+ 2006-09-07
+</span></div><img src=
+ "ResearchVsBusiness.png">
 	
  Who produces faster code, research or business? This time in ray x triangle mesh intersections.
  <br>
@@ -2494,29 +2758,33 @@ Who produces faster code, research or business?</a></th><td align=right>
  Havran's GOLEM vs Lightsprint Collider.
  Stay tuned.
 
-</td><td valign=top><img src="ResearchVsBusiness.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-06"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-06">
-Realtime radiosity in GameTools</a></th><td align=right>
-2006-09-06</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime radiosity in GameTools
+</a><span>
+ 2006-09-06
+</span></div><img src=
+ "gametools.png">
 
  According to <a href="http://www.gametools.org/html/technology.html">GameTools
  technology page</a>, 6 universities and 6 companies started
  work on <b>Realtime Radiosity</b> (among other tasks). Wow!
 
-</td><td valign=top><img src="gametools.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-05"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-05">
-Rasterization vs Ray Tracing</a></th><td align=right>
-2006-09-05</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Rasterization vs Ray Tracing
+</a><span>
+ 2006-09-05
+</span></div><img src=
+ "raytracing.jpg">
 
  <a href="http://blogs.mercurynews.com/aei/2006/08/the_coming_comb.html"><b>Rasterization
  vs Ray Tracing</b></a> in opinions of AMD, Intel, ATI, NVIDIA etc.
@@ -2532,15 +2800,17 @@ Rasterization vs Ray Tracing</a></th><td align=right>
  Time when there's enough photorealism and we can sacrifice some performance
  to make renderer simpler is still far away.
 
-</td><td valign=top><img src="raytracing.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-04"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-04">
-Unfair paper rejections, is business better?</a></th><td align=right>
-2006-09-04</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Unfair paper rejections, is business better?
+</a><span>
+ 2006-09-04
+</span></div><img src=
+ "ResearchVsBusiness.png">
 
  Interesting reading on <a href="http://hardware.slashdot.org/article.pl?sid=06/08/29/0443210">graphics
  paper <b>unfair rejections</b></a>, especially at SIGGRAPH. 
@@ -2555,15 +2825,17 @@ Unfair paper rejections, is business better?</a></th><td align=right>
  in business, but look for example at sad situation with software patents.
  Try to do business with million of lawyers trying to kill you.
 
-</td><td valign=top><img src="ResearchVsBusiness.png" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-03"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-03">
-Scatter on ATI</a></th><td align=right>
-2006-09-03</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Scatter on ATI
+</a><span>
+ 2006-09-03
+</span></div><img src=
+ "ATI.png" style="height:85px;">
 
  <a href="http://www.gpgpu.org/forums/viewtopic.php?p=13109"><b>ATI's</b> support 
  for GPGPU</a> looks very promising, <b>scatter</b> (ability to write 
@@ -2574,22 +2846,24 @@ Scatter on ATI</a></th><td align=right>
  it's not clear if they make it possible to run program with scatter
  eg. on OpenGL texture.
 
-</td><td valign=top><img src="ATI.png" width=120 height=85 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
 
-<a name="2006-09-02"><table width=100% style="background-color:#cccccc"><tbody><tr><th align=left>
-<a href="#2006-09-02">
-Realtime Radiosity Bugs go Eurographics 2006</a></th><td align=right>
-2006-09-02</td></tr></tbody></table><table><tbody><tr><td width=100% valign=top>
+<div class="post"><div class="title"><a>
+ Realtime Radiosity Bugs go Eurographics 2006
+</a><span>
+ 2006-09-02
+</span></div><img src=
+ "RealtimeRadiosityBugs.jpg">
 
  Good news jump from the mailbox when I return from vacation - 
  <b>Realtime Radiosity Bugs</b> were selected for 
  <a href="http://www.cg.tuwien.ac.at/events/EG06/program-gamescompetition.php">bigscreen
  show and competition at <b>Eurographics 2006</b></a>.
 
-</td><td valign=top><img src="RealtimeRadiosityBugs.jpg" width=120 height=120 align=center></td></tr></tbody></table></a>
+</div>
 
 
 
