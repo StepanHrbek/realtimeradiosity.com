@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter>
+
+<demo>
+ <name>Apollo 11</name>
+ <author>Nvidia</author>
+ <date>2014/11</date>
+ <image>apollo11.jpg</image>
+ <technique>VXGI (voxel based)</technique>
+ <technique-sub>GPU</technique-sub>
+ <scene>static</scene>
+ <light>dynamic</light>
+ <doc type="project page" href="http://www.geforce.com/games-applications/pc-applications/apollo-11" />
+ <doc type="Windows binary" href="http://international.download.nvidia.com/downloads/cool_stuff/demos/Setup-Apollo11.exe" />
+ <notes>GeForce 9xx only, 8GB RAM</notes>
+</demo>
+
+
+<demo>
+ <name>sfera</name>
+ <author>David Dade Bucciarelli</author>
+ <date>2012/12</date>
+ <image>sfera.jpg</image>
+ <technique>Realtime pathtracing</technique>
+ <technique-sub>OpenCL</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="binaries, source code" href="http://code.google.com/p/sfera/" />
+ <notes>spheres only</notes>
+</demo>
+
+<demo>
+ <name>Voxel cone tracing</name>
+ <author>Alex Nankervis</author>
+ <date>2012/11</date>
+ <image>voxel_cone_tracing.jpg</image>
+ <technique>Voxel cone tracing</technique>
+ <technique-sub>OpenGL 4.3</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="author's projects page" href="http://www.naixela.com/alex/" />
+ <doc type="Windows binary, source code" href="http://www.naixela.com/alex/downloads/voxel_cone_tracing_gi.zip" />
+ <notes>whole scene in single 3d texture</notes>
+</demo>
+
+<demo>
+ <name>WebGL path tracing</name>
+ <author>Evan Wallace</author>
+ <date>2010/12</date>
+ <image>WebGL_pathtracing.jpg</image>
+ <technique>Realtime pathtracing</technique>
+ <technique-sub>GPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="project page (runs in browser)" href="http://madebyevan.com/webgl-path-tracing/" />
+ <doc type="source code (javascript generating glsl)" href="http://madebyevan.com/webgl-path-tracing/webgl-path-tracing.js" />
+</demo>
+
+<demo>
+ <name>LPV</name>
+ <author>Andreas Kirsch</author>
+ <date>2010/07</date>
+ <image>LPV.jpg</image>
+ <download type="Windows binary, source code" href="http://blog.blackhc.net/wp-content/uploads/2010/07/LPVPrototype.zip" />
+ <technique>Light Propagation Volume</technique>
+ <scene>static</scene>
+ <light>static</light>
+ <doc type="project page" href="http://blog.blackhc.net/2010/07/light-propagation-volumes/" />
+</demo>
+
+<demo>
+ <name>Brigade</name>
+ <author>Jacco Bikker</author>
+ <date>2010/05</date>
+ <image>brigade.jpg</image>
+ <technique>Realtime pathtracing</technique>
+ <technique-sub>CPU+GPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="project page" href="http://igad.nhtv.nl/~bikker/" />
+ <notes>Windows, source code, optional GPU path needs Nvidia 200+</notes>
+</demo>
+
+<demo>
+ <name>SmallptGPU</name>
+ <author>David Bucciarelli</author>
+ <date>2009/12</date>
+ <image>smallptgpu.jpg</image>
+ <technique>Path tracing</technique>
+ <technique-sub>GPU/OpenCL</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="project page" href="http://davibu.interfree.it/opencl/smallptgpu/smallptGPU.html" />
+ <doc type="video" href="http://vimeo.com/8141489" />
+ <notes>Windows, Linux, spheres only, ~1fps, source code</notes>
+</demo>
+
+<demo>
+ <name>The Once Known as SmallPT</name>
+ <author>Thierry Berger-Perrin</author>
+ <date>2009/01</date>
+ <image>tokaspt.jpg</image>
+ <technique>Path tracing</technique>
+ <technique-sub>GPU/CUDA</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="project page" href="http://code.google.com/p/tokaspt/" />
+ <notes>Windows, Linux, Nvidia only, spheres only, ~50fps, source code</notes>
+</demo>
+
+<demo>
+ <name>Lightsmark</name>
+ <author>Štěpán Hrbek</author>
+ <date>2007/10</date>
+ <image>Lightsmark.jpg</image>
+ <technique>Realtime radiosity</technique>
+ <technique-sub>GPU+CPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="project page" href="http://dee.cz/lightsmark" />
+ <doc type="technique explanation: penumbra shadows" href="http://dee.cz/fcss" />
+ <doc type="technique explanation: integration" href="http://dee.cz/rri" />
+ <notes>Windows, Linux, ~500fps</notes>
+</demo>
+
+<demo>
+ <name>DX10 Radiosity and Soft Shadows</name>
+ <author>Simon Bratel</author>
+ <date>2007/10</date>
+ <image>engine101_L.jpg</image>
+ <download type="Windows binary" href="http://rapidshare.com/files/65821522/MyEngine_1.01.rar" />
+ <technique>Deffered instant radiosity</technique>
+ <technique-sub>GPU</technique-sub>
+ <scene>static</scene>
+ <light>dynamic</light>
+ <doc type="paper" href="http://rapidshare.com/files/61198754/paper.pdf" />
+ <notes>Vista and Direct3D 10 only</notes>
+</demo>
+
+<demo>
+ <name>yaCORT</name>
+ <author>Benjamin Segovia</author>
+ <date>2007/06</date>
+ <technique>Realtime raytracing</technique>
+ <technique-sub>CPU</technique-sub>
+ <scene>static</scene>
+ <light>static</light>
+ <doc type="project page" href="http://liris.cnrs.fr/~bsegovia/yacort" />
+ <notes>~0.5fps raytraced static GI, source code for Linux.</notes>
+</demo>
+
+<demo>
+ <name>Global Illumination</name>
+ <author>AMD</author>
+ <author>Emil Persson</author>
+ <date>2007/06</date>
+ <image>RadeonGI.jpg</image>
+ <download type="Windows Vista binary, source code" href="http://ati.amd.com/developer/SDK/AMD_SDK_Samples_May2007/D3D_10/Global_Illumination.zip" />
+ <technique>Grid of cubemaps</technique>
+ <technique-sub>GPU</technique-sub>
+ <scene>static</scene>
+ <light>dynamic</light>
+ <doc type="AMD Direct3D 10 samples" href="http://ati.amd.com/developer/SDK/Samples_Documents.html" />
+ <notes>Vista and Direct3D 10 only</notes>
+</demo>
+
+<demo>
+ <name>Arauna</name>
+ <author>Jacco Bikker</author>
+ <date>2007/04</date>
+ <image>arauna.jpg</image>
+ <technique>Realtime raytracing</technique>
+ <technique-sub>CPU</technique-sub>
+ <scene>static</scene>
+ <light>dynamic</light>
+ <doc type="project page" href="http://igad.nhtv.nl/~bikker/" />
+</demo>
+
+<demo>
+ <name>Lightsprint Demo</name>
+ <author>Lightsprint</author>
+ <date>2007/03</date>
+ <image>LightsprintDemo.jpg</image>
+ <download type="Windows binary" href="http://dee.cz/lightsprint/LightsprintDemo1.3.exe" />
+ <technique>Realtime radiosity</technique>
+ <technique-sub>GPU+CPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="project page" href="http://lightsprint.com/demo.html" />
+ <doc type="technique explanation: penumbra shadows" href="http://dee.cz/fcss" />
+ <doc type="technique explanation: realtime radiosity [cz]" href="http://dee.cz/rr/rr.pdf" />
+ <doc type="technique explanation: integration" href="http://dee.cz/rri" />
+</demo>
+
+<demo>
+ <name>Deferred Rendered Radiosity from First Person Perspective</name>
+ <author>Simon Bratel</author>
+ <date>2007/03</date>
+ <image>DeferredRadiosity.jpg</image>
+ <download type="Windows binary" href="http://rapidshare.com/files/20569793/GI_Shader.zip.html" />
+ <technique>Deffered instant radiosity</technique>
+ <technique-sub>GPU</technique-sub>
+ <scene>static</scene>
+ <light>fixed to camera</light>
+ <doc type="technique explanation" href="http://www.sfjohansson.com/bratel/short_article.pdf" />
+ <doc type="forum" href="http://www.gamedev.net/community/forums/topic.asp?topic_id=438221" />
+</demo>
+
+<demo>
+ <name>POV ray beta RTR</name>
+ <author>many</author>
+ <date>2006/11</date>
+ <technique>Realtime raytracing</technique>
+ <technique-sub>CPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="project page with Windows/Mac/Linux binaries and source code" href="http://www.povray.org/beta/rtr/" />
+ <doc type="RTN article" href="http://www.acm.org/tog/resources/RTNews/html/rtnv20n1.html#art7" />
+</demo>
+
+<demo>
+ <name>RealStorm Global Illumination Bench 2006</name>
+ <author>Realstorm</author>
+ <date>2006</date>
+ <image>realstorm.jpg</image>
+ <download type="project page with Windows binary" href="http://realstorm.com" />
+ <source></source>
+ <technique>Realtime raytracing</technique>
+ <technique-sub>CPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc></doc>
+</demo>
+
+<demo>
+ <name>Realtime Radiosity Bugs</name>
+ <author>Štěpán Hrbek</author>
+ <author>Petr Šťastný</author>
+ <date>2006/09</date>
+ <image>RealtimeRadiosityBugs.jpg</image>
+ <download type="Windows binary" href="http://dee.cz/rrb/RRBugs.rar" />
+ <technique>Realtime radiosity</technique>
+ <technique-sub>GPU+CPU</technique-sub>
+ <scene>static</scene>
+ <light>dynamic</light>
+ <doc type="project page" href="http://dee.cz/rrb" />
+ <doc type="technique explanation: penumbra shadows" href="http://dee.cz/fcss" />
+ <doc type="technique explanation: realtime radiosity [cz]" href="http://dee.cz/rr/rr.pdf" />
+ <doc type="technique explanation: integration" href="http://dee.cz/rri" />
+</demo>
+
+<demo>
+ <name>RealTime Radiosity on GPU</name>
+ <author>Lionel Berenguier</author>
+ <date>2006</date>
+ <image>radiance_projection.jpg</image>
+ <download type="Windows binary" href="http://berengui.club.fr/rt_rad.zip" />
+ <technique>Radiance projection</technique>
+ <technique-sub>GPU, direct+2 diffuse bounces</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="technique explanation" href="http://berengui.club.fr/rtrad.html" />
+ <notes>Doesn't work on ATI / NVIDIA?</notes>
+</demo>
+
+<demo>
+ <name>Stream Ray Tracer</name>
+ <author>Gabriel Moreno</author>
+ <date>2004</date>
+ <image>raytrac_gpu.jpg</image>
+ <download type="Windows binary" href="http://www.shadertech.com/shaders/stsummer04/GabrielMoreno_bin.zip" />
+ <download type="source code" href="http://www.shadertech.com/shaders/stsummer04/GabrielMoreno_src.zip" />
+ <technique>Realtime raytracing</technique>
+ <technique-sub>GPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="project page (broken)" href="http://www.cgl.uwaterloo.ca/~gmoreno/streamray.html" />
+ <notes>Doesn't work on ATI?</notes>
+</demo>
+
+<demo>
+ <name>Real-Time Radiosity demo</name>
+ <author>Nik Chapman</author>
+ <date>2004</date>
+ <image>instant1.jpg</image>
+ <image>instant2.jpg</image>
+ <download type="Windows binary" href="http://homepages.paradise.net.nz/nickamy/realtimerad/rtrad_v1_0.zip" />
+ <technique>Instant radiosity</technique>
+ <technique-sub>GPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>static</light>
+ <doc type="technique explanation" href="http://homepages.paradise.net.nz/nickamy/realtimerad/realtimerad.html" />
+ <notes>Doesn't work on ATI?</notes>
+</demo>
+
+<demo>
+ <name>Hardware Global Illumination on the Radeon 9800</name>
+ <author>Mangesh Nijasure</author>
+ <author>Sumanta Pattanaik</author>
+ <author>Vineet Goel</author>
+ <date>2003</date>
+ <image>cubemapgrid.jpg</image>
+ <download type="Windows binary" href="http://graphics.cs.ucf.edu/GPUassistedGI/GPUGIExecutables.zip" />
+ <technique>Grid of cubemaps</technique>
+ <technique-sub>GPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="abstract" href="http://jgt.akpeters.com/papers/NijasureEtAl05/" />
+ <doc type="abstract" href="http://graphics.cs.ucf.edu/GPUassistedGI/index.php" />
+</demo>
+
+<demo>
+ <name>Radiosity in dynamic scenes</name>
+ <author>Štěpán Hrbek</author>
+ <date>2000</date>
+ <image>rr_cpu1.jpg</image>
+ <image>rr_cpu2.jpg</image>
+ <image>rr_cpu3.jpg</image>
+ <download type="DOS+Linux binaries, source code [cz]" href="http://dee.cz/rr/rr.rar" />
+ <technique>Realtime radiosity</technique>
+ <technique-sub>CPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <doc type="technique explanation [cz]" href="http://dee.cz/rr/rr.pdf" />
+</demo>
+
+<demo>
+ <name>Realtime Radiosity 2</name>
+ <author>Daniel Sýkora</author>
+ <author>Štěpán Hrbek</author>
+ <date>2000</date>
+ <image>rr22.jpg</image>
+ <image>rr23.jpg</image>
+ <image>rr21.jpg</image>
+ <download type="Windows+DOS+Linux binaries" href="http://broncs.scene.cz/prodz/rr2final.zip" />
+ <technique>Realtime GI mix</technique>
+ <technique-sub>CPU</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+ <notes>Quality suffers from high compression of precomputed data, not from the technique itself.</notes>
+</demo>
+
+<demo>
+ <name>many realtime raytraced intros</name>
+ <author>many</author>
+ <date>1995-2001</date>
+ <image>heaven7.jpg</image>
+ <download type="list, Windows+DOS binaries" href="http://www.acm.org/tog/resources/RTNews/demos/overview.htm" />
+ <technique>Realtime raytracing</technique>
+ <technique-sub>CPU, specular bounces</technique-sub>
+ <scene>dynamic</scene>
+ <light>dynamic</light>
+</demo>
+
+</chapter>
