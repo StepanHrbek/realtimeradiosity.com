@@ -117,9 +117,9 @@
  <technique-sub>GPU+CPU</technique-sub>
  <scene>dynamic</scene>
  <light>dynamic</light>
- <doc type="project page" href="http://dee.cz/lightsmark" />
- <doc type="technique explanation: penumbra shadows" href="http://dee.cz/fcss" />
- <doc type="technique explanation: integration" href="http://dee.cz/rri" />
+ <doc type="project page" href="https://dee.cz/lightsmark" />
+ <doc type="technique explanation: penumbra shadows" href="https://dee.cz/fcss" />
+ <doc type="technique explanation: integration" href="https://dee.cz/rri" />
  <notes>Windows, Linux, ~500fps</notes>
 </demo>
 
@@ -181,15 +181,15 @@
  <author>Lightsprint</author>
  <date>2007/03</date>
  <image>LightsprintDemo.jpg</image>
- <download type="Windows binary" href="http://dee.cz/lightsprint/LightsprintDemo1.3.exe" />
+ <download type="Windows binary" href="https://dee.cz/lightsprint/LightsprintDemo1.3.exe" />
  <technique>Realtime radiosity</technique>
  <technique-sub>GPU+CPU</technique-sub>
  <scene>dynamic</scene>
  <light>dynamic</light>
- <doc type="project page" href="http://lightsprint.com/demo.html" />
- <doc type="technique explanation: penumbra shadows" href="http://dee.cz/fcss" />
- <doc type="technique explanation: realtime radiosity [cz]" href="http://dee.cz/rr/rr.pdf" />
- <doc type="technique explanation: integration" href="http://dee.cz/rri" />
+ <doc type="project page" href="https://lightsprint.com/demo.html" />
+ <doc type="technique explanation: penumbra shadows" href="https://dee.cz/fcss" />
+ <doc type="technique explanation: realtime radiosity [cz]" href="https://dee.cz/rr/rr.pdf" />
+ <doc type="technique explanation: integration" href="https://dee.cz/rri" />
 </demo>
 
 <demo>
@@ -238,15 +238,15 @@
  <author>Petr Šťastný</author>
  <date>2006/09</date>
  <image>RealtimeRadiosityBugs.jpg</image>
- <download type="Windows binary" href="http://dee.cz/rrb/RRBugs.rar" />
+ <download type="Windows binary" href="https://dee.cz/rrb/RRBugs.rar" />
  <technique>Realtime radiosity</technique>
  <technique-sub>GPU+CPU</technique-sub>
  <scene>static</scene>
  <light>dynamic</light>
- <doc type="project page" href="http://dee.cz/rrb" />
- <doc type="technique explanation: penumbra shadows" href="http://dee.cz/fcss" />
- <doc type="technique explanation: realtime radiosity [cz]" href="http://dee.cz/rr/rr.pdf" />
- <doc type="technique explanation: integration" href="http://dee.cz/rri" />
+ <doc type="project page" href="https://dee.cz/rrb" />
+ <doc type="technique explanation: penumbra shadows" href="https://dee.cz/fcss" />
+ <doc type="technique explanation: realtime radiosity [cz]" href="https://dee.cz/rr/rr.pdf" />
+ <doc type="technique explanation: integration" href="https://dee.cz/rri" />
 </demo>
 
 <demo>
@@ -316,12 +316,12 @@
  <image>rr_cpu1.jpg</image>
  <image>rr_cpu2.jpg</image>
  <image>rr_cpu3.jpg</image>
- <download type="DOS+Linux binaries, source code [cz]" href="http://dee.cz/rr/rr.rar" />
+ <download type="DOS+Linux binaries, source code [cz]" href="https://dee.cz/rr/rr.rar" />
  <technique>Realtime radiosity</technique>
  <technique-sub>CPU</technique-sub>
  <scene>dynamic</scene>
  <light>dynamic</light>
- <doc type="technique explanation [cz]" href="http://dee.cz/rr/rr.pdf" />
+ <doc type="technique explanation [cz]" href="https://dee.cz/rr/rr.pdf" />
 </demo>
 
 <demo>
