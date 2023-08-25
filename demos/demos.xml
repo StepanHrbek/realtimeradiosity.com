@@ -118,6 +118,7 @@
  <scene>dynamic</scene>
  <light>dynamic</light>
  <doc type="project page" href="https://dee.cz/lightsmark" />
+ <doc type="source code" href="https://lightsprint.com/SDK" />
  <doc type="technique explanation: penumbra shadows" href="https://dee.cz/fcss" />
  <doc type="technique explanation: integration" href="https://dee.cz/rri" />
  <notes>Windows, Linux, ~500fps</notes>
