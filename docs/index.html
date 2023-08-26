@@ -12,12 +12,25 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+	.header {
+		display: flow-root;
+		background-color:#dddddd;
+	}
+	.header > img {
+		float: left;
+		width:240px;
+		height:171px;
+		margin-right: 1em;
+	}
 	.post {
 		display: flow-root;
 		margin-bottom: 1em;
 	}
 	.post > img {
 		float: right;
+		width: 120px;
+		height: 120px;
+		margin-top: 5px;
 	}
 	.title {
 		width: 100%;
@@ -37,11 +50,6 @@
 		margin-top: 0;
 		float: right;
 		max-width: min-content;
-	}
-	img {
-		width: 120px;
-		height: 120px;
-		margin-top: 5px;
 	}
 	pre {
 		white-space: pre-wrap; 
@@ -77,18 +85,16 @@
 <BODY>
 
 
-<table border=0 cellpadding=0><tr>
-<td><img src="RealtimeRadiosityBlog.jpg" style="width:240px; height:171px;"></td>
-<td style="background-color:#dddddd;">
-<b>Realtime Radiosity</b>, global illumination technique
-that achieves its fantastic speed (typically order of magnitude higher than other GI techniques)
-by transporting light between actual scene triangles, rather than between additional artificial
-structures (voxels etc), thus minimizing overhead. 
-Suitable for rasterizers, all local illumination models, light types, materials, shaders, graphics APIs.
-Optimal for indoor games and real-time visualizations with fully dynamic lights.
-<p>
-<b>RealtimeRadiosity.com</b>, Stepan's realtime radiosity, global illumination and rendering blag
-</td></tr></table>
+<div class="header">
+ <img src="RealtimeRadiosityBlog.jpg">
+ <b>Realtime Radiosity</b> - global illumination technique
+ that achieves its speed (typically order of magnitude higher than other GI techniques)
+ by transporting light between actual scene triangles, rather than between additional artificial
+ structures (voxels etc), thus minimizing overhead. 
+ Suitable for rasterizers, all local illumination models, light types, materials, shaders, graphics APIs.
+ Optimal for indoor games and real-time visualizations with fully dynamic lights.
+</div>
+
 <p>
 <b>[ NEWS ] [ <a href="demos">DEMOS</a> ] [ TECHNIQUES ] [ PEOPLE ]</b>
 <p>
