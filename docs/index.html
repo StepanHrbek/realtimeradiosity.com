@@ -5,6 +5,9 @@
  <META name="viewport" content="width=device-width, initial-scale=1">
  <TITLE>Realtime Radiosity, Global Illumination News</TITLE>
  <style>
+	body {
+		max-width: 1250px;
+	}
 	.post {
 		display: flow-root;
 		margin-bottom: 1em;
@@ -39,6 +42,9 @@
 	pre {
 		white-space: pre-wrap; 
 	}
+	ul {
+		padding-left: 20px;
+	}
  </style>
  <script>
   // generate permalinks from each post title to itself
@@ -64,7 +70,7 @@
   }
  </script>
 </HEAD>
-<BODY style="max-width: 1250px;">
+<BODY>
 
 
 <table border=0 cellpadding=0><tr>
@@ -143,6 +149,7 @@ Thanks Yann Yeo for Voxel cone tracing link, thanks Redox for several earlier li
 </span></div><img src=
  "OpenCL.png">
 
+<ul>
 <li>
 <a href="http://www.khronos.org/news/press/khronos-releases-opencl-1.2-specification">OpenCL 1.2</a>
 was released, news behind link (no paradigm shifts today).
@@ -177,6 +184,7 @@ Although both OpenACC or C++ AMP APIs look well and I wish them support
 from GPU vendors, I did not see any implementations yet.
 What we have and what works best today is OpenCL for GPUs, OpenMP for CPUs
 and CUDA for confused developers.
+</ul>
 
 </div>
 
@@ -296,6 +304,7 @@ In discussion below, daglwn added
 </span></div><img src=
  "box.jpg">
 
+<ul>
 <li><a href="http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&Number=301264">OpenGL 4.2</a>
  brings bunch of new features, even for older hardware, with nearly immediate support from AMD and Nvidia. Highly appreciated.
 <br><br>
@@ -315,6 +324,7 @@ In discussion below, daglwn added
  Like OpenCL, it explicitly manages memory and transfers between CPU and GPU address spaces, and it restricts parallel code to not use recusrsion, library functions etc.
  With C++ lambdas, it's even more nice and compact than OpenCL and CUDA code, it's win in design.
  The only problem - it's designed to lock you into Microsoft platform, like CUDA is designed to lock you into Nvidia platform, so it can't replace multiplatform OpenCL.
+</ul>
 
 </div>
 
@@ -719,13 +729,17 @@ detect when the same filename is used again and return new reference to the same
 User code is not affected, memory saved, load time reduced. No other refcounting technique makes this possible.
 
 <h4>Pros</h4>
+<ul>
 <li><b>More efficient</b> than smart pointers (no additional allocations, no additional indirection, in this case also no locks, simply no overhead).
 <li>It does not affect work with objects (new, delete), old code runs with refcounted objects unmodified. I.e. refcounting is invisible, ideal for ninjas.
 <li>It does not create any new types, old types become refcounted.
+</ul>
 
 <h4>Cons</h4>
+<ul>
 <li>You must be able to not destruct member variables in destructor, types with automatic destruction can't be used.
 <li>Very intrusive, the same code must be implemented in every refcounted class, it can't be implemented once and reused.
+</ul>
 <p>
 
 </div>
@@ -862,6 +876,7 @@ But Dennis Lee would have to open source it.
 </span></div><img src=
  "box.jpg">
 
+<ul>
 <li><a href="http://www.crytek.com/fileadmin/user_upload/inside/presentations/2009/Light_Propagation_Volumes.pdf">Light Propagation Volumes in CryEngine 3</a> (<a href="http://www.crytek.com/fileadmin/user_upload/inside/presentations/2009/Global_Illumination.zip">video</a>)
     - Excellent, looks like practical for hard-boiled game devs.
       It's mix of several techniques, so devs may be sad it's
@@ -881,6 +896,7 @@ But Dennis Lee would have to open source it.
       however micro-rendering works with point hierarchy that is easier
       to update in dynamic scenes (in O(n)).
       Micro-rendering seems to be faster also in absolute numbers.
+</ul>
 
 </div>
 
